@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+# Twitter Bootstrap generators
+gem 'bootstrap-generators', '~> 3.3.4'
+# HTTParty to add api functionality
+gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -24,7 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -38,6 +41,10 @@ group :development, :test do
 end
 
 group :development do
+   # Use pry with Rails console
+  gem 'pry-rails'
+  # Better Rails Error Pages
+  gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
