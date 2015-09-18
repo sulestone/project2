@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'jquery-masonry-rails'
 # Twitter Bootstrap generators
 gem 'bootstrap-generators', '~> 3.3.4'
 # HTTParty to add api functionality
@@ -42,7 +43,7 @@ end
 
 group :development do
    # Use pry with Rails console
-  gem 'pry-rails'
+  # gem 'pry-rails'
   # Better Rails Error Pages
   gem 'better_errors'
   # Access an IRB console on exception pages or by using <%= console %> in views

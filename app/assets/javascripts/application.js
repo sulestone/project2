@@ -1,3 +1,4 @@
+// require 'masonry.pkgd'
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -15,3 +16,8 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$('a[data-popup]').live('click', function(e) {
+    window.open($(this).attr('href'));
+    e.preventDefault();
+});
