@@ -3,6 +3,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures
   # GET /pictures.json
+
   def index
     @picture = Picture.get_instagram
   end
@@ -14,7 +15,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    @picture = $response
   end
 
   # GET /pictures/1/edit
@@ -64,7 +65,7 @@ class PicturesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_picture
-      @picture = Picture.find(params[:id])
+      # @picture = Picture.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

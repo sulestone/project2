@@ -6,4 +6,8 @@
   <h1>New picture</h1>
 </div>
 
-<%= render 'form' %>
+<div>
+<%= image_tag @picture["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+</div>
+
+

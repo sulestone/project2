@@ -6,22 +6,23 @@
   <h1>Trending Pictures</h1>
   <br>
   <br>
-  <!-- Caption: <%= @picture["data"][0]["caption"]["text"] %>
 </div>
-<% @picture["data"].each do |each_picture| %>
-<%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
-<% end %> -->
 
 <div class="grid">
   <div class="grid-sizer"></div>
+    <% picture_count = 0 %>
     <% @picture["data"].each do |each_picture| %>
       <% if each_picture["type"] == "image" %>
         <div class="grid-item">
-          <%= link_to image_tag each_picture["images"]["standard_resolution"]["url"], :popup => true %>
+          <%= image_tag each_picture["images"]["standard_resolution"]["url"], :caption => "save" %>
+          <%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %>
+          <% picture_count += 1 %>
         </div>
       <% elsif each_picture["type"] == "video" %>
         <div class="grid-item">
-          <%= video_tag each_picture["videos"]["low_resolution"]["url"], :size => "350x350", :controls => true %>
+          <%= link_to video_tag each_picture["videos"]["low_resolution"]["url"], :size => "350x350", :controls => true %>
+          <%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %>
+          <% picture_count += 1 %>
         </div>
         <% end %>
     <% end %>
