@@ -1,11 +1,13 @@
 class PicturesController < ApplicationController
-  before_action :signed_in_user, :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user
+  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :verify_correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /pictures
   # GET /pictures.json
 
   def index
-    @picture = current_user.Picture.get_instagram
+    @picture = Picture.get_instagram
   end
 
   # GET /pictures/1
