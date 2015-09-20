@@ -4,7 +4,7 @@ class CreatePictures < ActiveRecord::Migration
       t.text "instagram_user"
       t.text "url_link"
       t.text "caption"
-      t.string "type"
+      t.text "media_type"
       t.timestamps null: false
     end
   end

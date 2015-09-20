@@ -15,7 +15,7 @@
       <% if each_picture["type"] == "image" %>
         <div class="grid-item">
           <%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
-          <div class="save-button"><%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
+          <div class="save-button"><%= link_to("Keep", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
           <% picture_count += 1 %>
         </div>
       <% elsif each_picture["type"] == "video" %>

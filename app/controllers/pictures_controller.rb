@@ -20,6 +20,10 @@ class PicturesController < ApplicationController
     @picture = $response
   end
 
+  # def save_pic
+  #   $save_picture = Picture.new
+  # end
+
   # GET /pictures/1/edit
   def edit
   end
@@ -27,15 +31,15 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
-    @picture.user = current_user
+    @picture_to_add = Picture.new(picture_params)
+    @picture_to_add.user = current_user
 
     respond_to do |format|
-      if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+      if @picture_to_add.save
+        format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +50,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to picture_path, notice: 'Picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @picture }
       else
         format.html { render :edit }
@@ -73,6 +77,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params[:picture]
+      params.require(:picture).permit(:instagram_user, :url_link, :caption, :media_type)
     end
 end

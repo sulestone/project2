@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150920000019) do
     t.text     "instagram_user"
     t.text     "url_link"
     t.text     "caption"
-    t.string   "type"
+    t.text     "media_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "user_id"
