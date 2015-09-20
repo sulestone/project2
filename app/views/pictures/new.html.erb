@@ -6,8 +6,22 @@
   <h1>New picture</h1>
 </div>
 
-<div>
-<%= image_tag @picture["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+<div>]
+  <% if @picture["data"][(params[:id].to_i)]["type"] == "image" %>
+    <%= image_tag @picture["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+  <%elsif @picture["data"][(params[:id].to_i)]["type"] == "video" %>
+    <%= video_tag @picture["data"][(params[:id].to_i)]["videos"]["standard_resolution"]["url"], :controls => true %>
+  <% end %>
 </div>
+<div>
+  <%= @picture["data"][(params[:id].to_i)]["comments"]["count"] %> ... COMMENTS <br><br>
+  <% @picture["data"][(params[:id].to_i)]["comments"]["data"].each do |user_comment| %>
+  <% user = user_comment["from"]["username"] %>
+  <% comment = user_comment["text"] %>
+  <%= "#{user} : #{comment}" %><br>
+  <% end %>
+</div>
+
+
 
 
