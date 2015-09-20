@@ -1,11 +1,11 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, :set_picture, only: [:show, :edit, :update, :destroy]
 
   # GET /pictures
   # GET /pictures.json
 
   def index
-    @picture = Picture.get_instagram
+    @picture = current_user.Picture.get_instagram
   end
 
   # GET /pictures/1
@@ -26,6 +26,7 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture.user = current_user
 
     respond_to do |format|
       if @picture.save
