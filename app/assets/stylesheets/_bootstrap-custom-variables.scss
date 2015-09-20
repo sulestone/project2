@@ -1,5 +1,5 @@
 // custom settings for Twitter Bootstrap
-// $body-bg: #4af;
+$body-bg: #FFF;
 
 * {
   -webkit-box-sizing: border-box;
@@ -17,7 +17,7 @@ body {
 /* ---- isotope ---- */
 
 .grid {
-  background: #DDD;
+  background: #000;
 }
 
 /* clear fix */
@@ -36,9 +36,16 @@ body {
 
 .grid-item {
   float: left;
+  height: 417px;
 }
 
 .grid-item img {
   display: block;
   max-width: 100%;
+}
+.save-button {
+  position: relative;
+  bottom: 100px;
+  left: 150px;
+  font-size: 2.2em;
 }

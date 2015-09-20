@@ -14,14 +14,14 @@
     <% @picture["data"].each do |each_picture| %>
       <% if each_picture["type"] == "image" %>
         <div class="grid-item">
-          <%= image_tag each_picture["images"]["standard_resolution"]["url"], :caption => "save" %>
-          <%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %>
+          <%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
+          <div class="save-button"><%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
           <% picture_count += 1 %>
         </div>
       <% elsif each_picture["type"] == "video" %>
         <div class="grid-item">
-          <%= link_to video_tag each_picture["videos"]["low_resolution"]["url"], :size => "350x350", :controls => true %>
-          <%= link_to("Save", {:action => 'new', :id => picture_count}, :class => 'new action') %>
+          <%= video_tag each_picture["videos"]["standard_resolution"]["url"], :size => "400x400", :controls => true %>
+          <div class="save-button"><%= link_to("Keep", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
           <% picture_count += 1 %>
         </div>
         <% end %>

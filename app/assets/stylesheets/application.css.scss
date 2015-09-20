@@ -34,3 +34,14 @@ main {
     text-align:center
   }
 }
+.save-button {
+  a {
+    color: #FFF;
+  }
+}
+.save-button {
+  a:hover, a:focus {
+    color: #23527c;
+    text-decoration: none;
+  }
+}
