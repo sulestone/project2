@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = $response
+    @picture = Picture.new
   end
 
   # def save_pic
@@ -78,5 +78,10 @@ class PicturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       params.require(:picture).permit(:instagram_user, :url_link, :caption, :media_type)
+    end
+
+    def verify_correct_user
+      @picture = current_user.pictures.find_by(id: params[:id])
+      redirect_to root_url, notice: 'You dont have access!' if @picture.nil?
     end
 end

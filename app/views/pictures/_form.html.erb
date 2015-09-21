@@ -1,21 +1,45 @@
-  <%= form_for(@save_picture = Picture.new, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @save_picture.errors.any? %>
+  <%= form_for(@picture, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @picture.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@save_picture.errors.count, "error") %> prohibited this picture from being saved:</h4>
+      <h4><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h4>
 
       <ul>
-      <% @save_picture.errors.full_messages.each do |msg| %>
+      <% @picture.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
+  <% url_link = $response["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+  <% instagram_user = $response["data"][(params[:id].to_i)]["user"]["username"] %>
+  <% media_type = $response["data"][(params[:id].to_i)]["type"] %>
+
   <div class="form-group">
     <%= f.label :instagram_user, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :instagram_user, class: "form-control" %>
+      <%= f.text_field :instagram_user, :value => instagram_user, class: "form-control" %>
     </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :url_link, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field:url_link, :value => url_link, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :caption, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :caption, :value => "This is a placeholder", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :media_type, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :media_type, :value => media_type, class: "form-control" %>
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
@@ -23,3 +47,5 @@
     </div>
   </div>
 <% end %>
+</div>
+</div>
