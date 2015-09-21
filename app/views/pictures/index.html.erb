@@ -1,29 +1,36 @@
 <div class="page-header">
   <%= link_to new_picture_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    Refresh Images
+    New Todo
   <% end %>
-  <h1>Trending Pictures</h1>
-  <br>
-  <br>
+  <h1>Here are your saved media</h1>
 </div>
 
-<div class="grid">
-  <div class="grid-sizer"></div>
-    <% picture_count = 0 %>
-    <% @picture["data"].each do |each_picture| %>
-      <% if each_picture["type"] == "image" %>
-        <div class="grid-item">
-          <%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
-          <div class="save-button"><%= link_to("Keep", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
-          <% picture_count += 1 %>
-        </div>
-      <% elsif each_picture["type"] == "video" %>
-        <div class="grid-item">
-          <%= video_tag each_picture["videos"]["standard_resolution"]["url"], :size => "400x400", :controls => true %>
-          <div class="save-button"><%= link_to("Keep", {:action => 'new', :id => picture_count}, :class => 'new action') %></div>
-          <% picture_count += 1 %>
-        </div>
-        <% end %>
-    <% end %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Instagram User</th>
+        <th>Media Link</th>
+        <th>Caption</th>
+        <th>Media Type</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @pictures) do |picture| %>
+            <td><%= picture.instagram_user %></td>
+            <td><%= picture.url_link %></td>
+            <td><%= picture.caption %></td>
+            <td><%= picture.media_type %></td>
+
+            <td><%= link_to 'Show', picture %></td>
+            <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+            <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
 </div>

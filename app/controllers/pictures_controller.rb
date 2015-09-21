@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   # GET /pictures.json
 
   def index
-    @picture = Picture.get_instagram
+    @pictures = current_user.pictures.order(created_at: :desc)
   end
 
   # GET /pictures/1
@@ -31,11 +31,11 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture_to_add = Picture.new(picture_params)
-    @picture_to_add.user = current_user
+    @picture = Picture.new(picture_params)
+    @picture.user = current_user
 
     respond_to do |format|
-      if @picture_to_add.save
+      if @picture.save
         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else

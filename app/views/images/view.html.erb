@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to new_picture_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Refresh Images
+  <% end %>
+  <h1>Trending Pictures</h1>
+  <br>
+  <br>
+</div>
+
+<div class="grid">
+  <div class="grid-sizer"></div>
+    <% picture_count = 0 %>
+    <% @media["data"].each do |each_picture| %>
+      <% if each_picture["type"] == "image" %>
+        <div class="grid-item">
+          <%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
+          <div class="save-button"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
+          <% picture_count += 1 %>
+        </div>
+      <% elsif each_picture["type"] == "video" %>
+        <div class="grid-item">
+          <%= video_tag each_picture["videos"]["standard_resolution"]["url"], :size => "400x400", :controls => true %>
+          <div class="save-button"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
+          <% picture_count += 1 %>
+        </div>
+        <% end %>
+    <% end %>
+</div>
