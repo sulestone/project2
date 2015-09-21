@@ -22,7 +22,7 @@
     <tbody>
       <%= content_tag_for(:tr, @pictures) do |picture| %>
             <td><%= picture.instagram_user %></td>
-            <td><%= picture.url_link %></td>
+            <td><a href='<%= image_tag picture.url_link %>'><%= image_tag picture.url_link %></a></td>
             <td><%= picture.caption %></td>
             <td><%= picture.media_type %></td>
 
