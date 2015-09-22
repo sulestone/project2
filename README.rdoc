@@ -1,28 +1,22 @@
-== README
+== InstaKeep README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Have you ever used the explorer page on instagram? Have you ever saw a picture or video you really liked but after closing or refreshing the app you have a difficult time find that exact image? InstaKeep is geared toward listing popular images and video in real time from instagram. When you find an image/video that you like you can select that image/video. After selecting and viewing the image/video, you have the option of saving the http reference to a database. The user account gives you the opportunity to save your own favorite images/video and so you can pull them up at a later date or time.  
 
-Things you may want to cover:
+Technology used:
 
-* Ruby version
+* Ruby 2.2
 
-* System dependencies
+* Rails 4.2
 
-* Configuration
+* PostgreSQL 9.4
 
-* Database creation
+* Twitter Bootstrap 3.3
 
-* Database initialization
+* SASS 3.4
 
-* How to run the test suite
+* bootstrap-generators 3.3
 
-* Services (job queues, cache servers, search engines, etc.)
+* Instagram API
 
-* Deployment instructions
+* Heroku
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
