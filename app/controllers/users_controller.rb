@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to media_path }
       format.json { render :show, status: :created, location: @user }
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to root_path, notice: 'Welcome!' }
+        format.html { redirect_to media_path, notice: 'Welcome!' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to pictures_path, notice: 'Your account was successfully delete.' }
       format.json { head :no_content }
     end
   end

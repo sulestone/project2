@@ -12,7 +12,9 @@ html { overflow-y: scroll; }
 
 body {
   font-family: sans-serif;
+  background: url(back_image.jpg)
 }
+
 
 /* ---- isotope ---- */
 
@@ -50,4 +52,10 @@ body {
   bottom: 100px;
   left: 0;
   font-size: 2.0em;
+}
+.unique {
+   background: #000;
+}
+.user-unique {
+  background: url(back8.jpg)
 }

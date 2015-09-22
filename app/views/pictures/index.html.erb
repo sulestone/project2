@@ -1,34 +1,43 @@
-<div class="page-header">
-  <%= link_to new_picture_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Todo
-  <% end %>
-  <h1>Here are your saved media</h1>
-</div>
+<div> class="unique">
+  <div class="page-header">
+      <div class="page-header">
+    <%= link_to media_path, class: 'btn btn-default' do %>
+      <span class=""></span>
+      See Whats Trending
+    <% end %>
+    <h1>Here are your saved media</h1>
+  </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Instagram User</th>
-        <th>Media Link</th>
-        <th>Caption</th>
-        <th>Media Type</th>
-        <th>Edit</th>
-        <th>Destroy</th>
-      </tr>
-    </thead>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Instagram User</th>
+          <th>Media Link</th>
+          <th>Caption</th>
+          <th>Media Type</th>
+          <th>Edit</th>
+          <th>Destroy</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= content_tag_for(:tr, @pictures) do |picture| %>
-            <td><%= picture.instagram_user %></td>
-            <td><a href='<%= image_tag picture.url_link %>'><%= image_tag picture.url_link %></a></td>
-            <td><%= picture.caption %></td>
-            <td><%= picture.media_type %></td>
+      <tbody>
+        <%= content_tag_for(:tr, @pictures) do |picture| %>
+              <td><%= picture.instagram_user %></td>
+              <td>
+                <% if picture.media_type == 'image' %>
+                <a href='<% picture.url_link %>'><%= image_tag picture.url_link %></a>
+                <% else %>
+                <a href='<% picture.url_link %>'><%= video_tag picture.url_link, :controls => true %></a>
+                <% end %>
+              </td>
+              <td><%= picture.caption %></td>
+              <td><%= picture.media_type %></td>
 
-            <td><%= link_to 'Show', picture %></td>
-            <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
+              <td><%= link_to 'Show', picture %></td>
+              <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

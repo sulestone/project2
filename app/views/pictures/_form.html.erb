@@ -12,40 +12,45 @@
     </div>
   <% end %>
 
-  <% url_link = $response["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+  <% if $response["data"][(params[:id].to_i)]["type"] == "image" %>
+    <% url_link = $response["data"][(params[:id].to_i)]["images"]["standard_resolution"]["url"] %>
+  <% else %>
+    <% url_link = $response["data"][(params[:id].to_i)]["videos"]["standard_resolution"]["url"] %>
+  <% end %>
   <% instagram_user = $response["data"][(params[:id].to_i)]["user"]["username"] %>
   <% media_type = $response["data"][(params[:id].to_i)]["type"] %>
 
   <div class="form-group">
     <%= f.label :instagram_user, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :instagram_user, :value => instagram_user, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :url_link, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :url_link, :value => url_link, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :caption, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :caption, :value => "This is a placeholder", class: "form-control" %>
+    <div class="col-sm-offset-2 col-sm-8">
+      <%= f.text_field :caption, :value => "", class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :media_type, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :media_type, :value => media_type, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
+    <div class="col-sm-offset-4 col-sm-10">
+      <%= f.submit "Save Media", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
+</div>
 </div>
 </div>
