@@ -20,25 +20,25 @@
   <% instagram_user = $response["data"][(params[:id].to_i)]["user"]["username"] %>
   <% media_type = $response["data"][(params[:id].to_i)]["type"] %>
 
-  <div class="form-group">
+  <div class="form-group hidden">
     <%= f.label :instagram_user, class: "col-sm-2 control-label" %>
     <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :instagram_user, :value => instagram_user, class: "form-control" %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group hidden">
     <%= f.label :url_link, class: "col-sm-2 control-label" %>
     <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :url_link, :value => url_link, class: "form-control" %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group hidden">
     <%= f.label :caption, class: "col-sm-2 control-label" %>
     <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :caption, :value => "", class: "form-control" %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group hidden">
     <%= f.label :media_type, class: "col-sm-2 control-label" %>
     <div class="col-sm-offset-2 col-sm-8">
       <%= f.text_field :media_type, :value => media_type, class: "form-control" %>
@@ -47,7 +47,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-10">
-      <%= f.submit "Save Media", class: "btn btn-primary" %>
+      <%= f.submit "ADD TO MY KEEPS", class: "btn btn-info" %>
     </div>
   </div>
 <% end %>

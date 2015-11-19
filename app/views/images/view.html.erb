@@ -1,6 +1,6 @@
 <body class="unique">
   <div class="page-header">
-    <%= link_to media_path, class: 'btn btn-primary' do %>
+    <%= link_to media_path, class: 'btn btn-info' do %>
       <span class="glyphicon glyphicon-plus"></span>
       <div>Refresh Media</div>
     <% end %>
@@ -10,22 +10,22 @@
   </div>
 
   <div class="grid">
-    <div class="grid-sizer"></div>
       <% picture_count = 0 %>
       <% @media["data"].each do |each_picture| %>
         <% if each_picture["type"] == "image" %>
           <div class="grid-item">
             <%= image_tag each_picture["images"]["standard_resolution"]["url"] %>
-            <div class="save-button"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
+            <div class="btn btn-success"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
             <% picture_count += 1 %>
           </div>
         <% elsif each_picture["type"] == "video" %>
           <div class="grid-item">
-            <%= video_tag each_picture["videos"]["standard_resolution"]["url"], :size => "400x400", :controls => true %>
-            <div class="save-button"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
+            <%= video_tag each_picture["videos"]["standard_resolution"]["url"], :controls => true %>
+            <div class="btn btn-success"><%= link_to("Keep", :controller => "pictures", :action => "new", :id => picture_count) %></div>
             <% picture_count += 1 %>
           </div>
           <% end %>
       <% end %>
   </div>
 </body>
+

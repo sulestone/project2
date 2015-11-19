@@ -1,24 +1,28 @@
+<body class="unique">
 <div class="page-header">
   <%= link_to pictures_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <h1>Show picture</h1>
+  <h1><%= @picture.instagram_user %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Instagram User:</dt>
-  <dd><%= @picture.instagram_user %></dd>
+<div class="row">
+  <div class="col-lg-12">
+    <div>Instagram User:</div>
+    <dd><%= @picture.instagram_user %></dd>
+    <dt>Url Caption:</dt>
+    <dd><%= @picture.caption %></dd>
+  </div>
+</div>
 
-  <dt>Url Link:</dt>
-  <dd><%= @picture.url_link %></dd>
-
-  <dt>Url Caption:</dt>
-  <dd><%= @picture.caption %></dd>
-
-  <dt>Media Type:</dt>
-  <dd><%= @picture.media_type %></dd>
-
-  <dt>Created:</dt>
-  <dd><%= @picture.created_at %></dd>
-</dl>
+<% if @picture.media_type == 'image' %>
+<div class="text-center">
+      <% @picture.url_link %><%= image_tag @picture.url_link %>
+                </div>
+ <% else%> 
+  <div class="text-center">
+      <% @picture.url_link %><%= video_tag @picture.url_link, controls: true %>
+  </div>
+<% end %>
+</body>
