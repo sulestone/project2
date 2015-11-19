@@ -1,9 +1,9 @@
 <body class="unique">
-    <%= link_to media_path, class: 'btn btn-default' do %>
+    <%= link_to media_path, class: 'btn btn-info' do %>
       <span class=""></span>
-      See Whats Trending
+      See What's Trending
     <% end %>
-    <h1>Here are your saved media</h1>
+    <h1>Your saved Keeps</h1>
     <hr>
   </div>
        
@@ -13,13 +13,13 @@
                 <div class="col-lg-4">
                 <% picture.url_link %><%= image_tag picture.url_link %>
                 <div class="btn btn-success"><%= link_to 'view image', picture %></div>
-                <div class="btn btn-success"><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                <div class="btn btn-danger"><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></div>
                 </div>
                 <% else %>
                 <div class="col-lg-4">
                 <% picture.url_link %><%= video_tag picture.url_link, :controls => true %>
                 <div class="btn btn-success"><%= link_to 'view image', picture %></div>
-                <div class="btn btn-success"><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                <div class="btn btn-danger"><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></div>
                 </div>
                 <% end %></div>
                 <!-- belong -->
